@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "title": "Master Prompt for Invoice POS System",
+    "version": "1.0",
+    "description": "Complete specification to generate the Invoice POS React Application."
+  },
+  "role_definition": {
+    "role": "Senior Frontend Engineer & UX Designer",
+    "specialty": "Modern Business Dashboards & POS Systems",
+    "tone": "Professional, clean, and pixel-perfect implementation"
+  },
+  "technical_stack": {
+    "framework": "React 18",
+    "language": "TypeScript",
+    "styling": "Tailwind CSS",
+    "icons": "lucide-react",
+    "charts": "recharts",
+    "bundler": "Vite",
+    "state_management": "React Hooks (useState, useEffect) with centralized state in App.tsx"
+  },
+  "design_system": {
+    "color_palette": {
+      "primary": "#0077B6 (Surf Blue)",
+      "accent": "#0096C7",
+      "background": "#F8FAFC (Light Slate)",
+      "text": "#333333",
+      "input_background": "#fcfbf7 (Light Beige - Mandatory for all forms)",
+      "status_paid": "Green-100 bg / Green-700 text",
+      "status_pending": "Yellow-100 bg / Yellow-700 text",
+      "status_overdue": "Red-100 bg / Red-700 text"
+    },
+    "typography": {
+      "font_family": "Inter, Poppins, sans-serif"
+    },
+    "layout_rules": {
+      "header": "Fixed top bar, Dark Gray (#1f2937), contains Logo, Company Name, and Navigation Links.",
+      "content": "Full-width fluid container, light gray background.",
+      "split_view_pattern": "Master-Detail layout. List takes 30% width, Detail takes 70% width when active. Transitions smoothly.",
+      "forms": "Full-page views for creating/editing. Clean white containers with large padding."
+    }
+  },
+  "features_specification": {
+    "1_dashboard": {
+      "header": "Search bar, Notification/Settings icons.",
+      "receivables_widget": {
+        "description": "Top banner showing Total Receivables.",
+        "visualization": "Multi-colored progress bar breakdown: Blue (Current), Yellow (1-15 days), Orange (16-30 days), Red (>45 days).",
+        "quick_action": "Blue '+ New' button with dropdown linking to New Invoice, New Stock (GRN), New Payment."
+      },
+      "kpi_cards": ["Total Invoices", "Paid", "Pending", "Overdue"],
+      "analytics": "Bar chart comparing Sales, Cost, and Profit over 6 months.",
+      "recent_table": "Top 8 recent invoices."
+    },
+    "2_customers": {
+      "layout": "Split View (List 30% / Overview 70%) or Full Width List.",
+      "list_view": {
+        "columns": ["Name", "Company", "Email", "Phone", "Receivables (Right Aligned)", "Edit Button"],
+        "header_actions": ["Search (Dark Theme)", "New Customer Button", "Options Menu (Sort, Import, Export)"]
+      },
+      "overview_panel": {
+        "tabs": ["OVERVIEW", "STATEMENT"],
+        "content": "Read-only customer details, payment terms, currency, and a transaction history table."
+      },
+      "create_edit_form": {
+        "mode": "Full Page View (replaces main content).",
+        "styling": "Inputs must use #fcfbf7 background.",
+        "fields": [
+          "Type (Radio: Business/Individual)",
+          "Primary Contact (Salutation, First Name, Last Name)",
+          "Company Name",
+          "Display Name (Required)",
+          "Currency (Fixed LKR/USD)",
+          "Email, Phone, Mobile",
+          "Payment Terms (Dropdown)"
+        ],
+        "tabs_bottom": ["Other Details (Tax)", "Remarks (Textarea)"]
+      }
+    },
+    "3_inventory": {
+      "layout": "Split View (List 30% / Overview 70%) or Full Width List.",
+      "list_view": {
+        "columns": ["Image", "Name/SKU", "Category (Collapsible)", "Supplier (Collapsible)", "Cost", "Price", "Stock Badge", "Edit Action"],
+        "toolbar": ["Search", "Receive Stock (GRN) Button", "New Item Button", "Category Filter Pills"]
+      },
+      "grn_feature": {
+        "name": "Goods Received Note",
+        "view_type": "Full Page Split Layout.",
+        "left_pane_70": {
+          "content": "GRN Form. Date, Supplier Select. Line Item Grid (Select Item, Qty, Cost, Discount). Grand Total. Confirm Button.",
+          "logic": "Confirming updates stock quantity and unit cost price for selected items."
+        },
+        "right_pane_30": {
+          "content": "Supplier Management Sidebar. List of suppliers, Search, Add New Supplier Form."
+        }
+      },
+      "create_edit_form": {
+        "mode": "Full Page View.",
+        "features": [
+          "Image Upload Placeholder (Large square)",
+          "Basic Info: Name, SKU, Category, Unit",
+          "Sales Info: Price, Description",
+          "Purchase Info: Cost, Supplier Name",
+          "Inventory: Opening Stock"
+        ]
+      }
+    },
+    "4_invoice_pos": {
+      "layout": "Split View (List 30% / Overview 70%) for viewing history.",
+      "pos_mode": {
+        "description": "Full Screen Create/Edit Mode.",
+        "layout": "Two Column Layout.",
+        "left_column_55": [
+          "Header: Select Customer, Invoice Date, Due Date.",
+          "Product Selection: Search Bar, Category Filter Pills, Grid of Product Cards (Image, Name, Price)."
+        ],
+        "right_column_45": [
+          "Cart Header: Item Count.",
+          "Cart List: Row per item with Qty +/-, Price, Remove X.",
+          "Footer: Subtotal, Tax (10%), Discount (5%), Grand Total.",
+          "Actions: Cancel (Red), Hold (Yellow), Process Payment (Green)."
+        ]
+      },
+      "payment_modal": {
+        "trigger": "Process Payment Button.",
+        "overlay": "Dark backdrop blur.",
+        "features": [
+          "Toggle: CASH vs CARD.",
+          "Cash Mode: Large Input for Amount Received. Auto-calc Change/Balance.",
+          "Validation: Complete Order disabled if cash insufficient.",
+          "Card Mode: Instructions placeholder."
+        ]
+      }
+    }
+  },
+  "data_structures": {
+    "customer_model": "id, name, company, email, phone, receivables, currency, payment_terms",
+    "item_model": "id, sku, name, category, stock_qty, cost, price, supplier, image_url",
+    "invoice_model": "id, number, customer_id, date, status, line_items[], totals",
+    "supplier_model": "id, name, contact, phone, email, address"
+  },
+  "instructions": "Generate the complete React application code based on this specification. Ensure all view transitions (List -> Create -> List) are handled smoothly. Use mock data constants to populate the app initially."
+}

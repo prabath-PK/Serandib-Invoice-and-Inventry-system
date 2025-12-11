@@ -1,0 +1,164 @@
+{
+  "project_meta": {
+    "app_name": "Invoice POS System",
+    "type": "Web Application (Dashboard/POS)",
+    "target_device": "Landscape Tablet & Desktop",
+    "tech_stack": {
+      "framework": "React 18 (Functional Components + Hooks)",
+      "language": "TypeScript",
+      "styling": "Tailwind CSS",
+      "icons": "lucide-react",
+      "charts": "recharts",
+      "build_tool": "Vite/Standard Bundler"
+    }
+  },
+  "design_system": {
+    "theme": {
+      "fonts": ["Inter", "Poppins", "sans-serif"],
+      "colors": {
+        "primary": "#0077B6 (Surf Blue)",
+        "accent": "#0096C7",
+        "background": "#F8FAFC (Light Gray/Blue)",
+        "text_main": "#333333",
+        "text_secondary": "#6B7280",
+        "input_bg": "#fcfbf7 (Light Beige - strict requirement for forms)",
+        "success": "Green-600",
+        "danger": "Red-600",
+        "warning": "Yellow-500"
+      }
+    },
+    "layout_principles": {
+      "navigation": "Top Header Bar (Fixed)",
+      "content_area": "Full width, scrollable",
+      "lists": "Table format with sticky headers",
+      "split_view": "Master-Detail pattern: List takes 30% width, Detail takes 70% width when item selected",
+      "modals": "Used sparingly (Payment, Options). Major actions use Full Page or Split View."
+    },
+    "ui_components": {
+      "buttons": "Rounded corners, uppercase text options for status badges",
+      "inputs": "Light beige background (#fcfbf7), soft borders",
+      "cards": "White background, soft shadow (shadow-sm), rounded-xl",
+      "scrollbars": "Custom thin gray scrollbars"
+    }
+  },
+  "global_navigation": {
+    "header_elements": [
+      "Logo (Boxed)",
+      "Company Name (Text)",
+      "Nav Links: HOME, INVOICE, INVENTORY, CUSTOMER, REPORT"
+    ],
+    "active_state": "Highlighted with Primary Color + Glow effect"
+  },
+  "modules": {
+    "dashboard": {
+      "layout": "Widget Grid",
+      "widgets": [
+        {
+          "name": "Receivables Banner",
+          "features": [
+            "Total Receivables Amount",
+            "Visual Progress Bar: Blue (Current), Yellow (1-15 days), Orange (16-30 days), Red (>31 days)",
+            "Legend with specific breakdown amounts"
+          ]
+        },
+        {
+          "name": "Quick Action Menu",
+          "trigger": "+ New Button",
+          "options": ["New Invoice", "New Stock (GRN)", "New Payment"]
+        },
+        {
+          "name": "KPI Cards",
+          "items": ["Total Invoices", "Paid", "Pending", "Overdue"]
+        },
+        {
+          "name": "Analytics",
+          "type": "Bar Chart (Sales vs Cost vs Profit)"
+        },
+        {
+          "name": "Recent Invoices",
+          "type": "Mini Table (Top 8)"
+        }
+      ]
+    },
+    "customers": {
+      "default_view": "Split Screen (List 100% or List 30% / Details 70%)",
+      "list_features": [
+        "Search Bar (Dark Theme)",
+        "New Customer Button",
+        "Options Menu (Sort by Name/Company, Import/Export CSV/XLS)"
+      ],
+      "detail_view": {
+        "tabs": ["OVERVIEW", "STATEMENT"],
+        "overview": "Read-only Customer Info + Payment Info + Remarks",
+        "statement": "Transaction History Table"
+      },
+      "create_edit_view": {
+        "type": "Full Page Form",
+        "fields": [
+          "Customer Type (Business/Individual)",
+          "Salutation, First Name, Last Name",
+          "Company Name",
+          "Display Name (Required)",
+          "Currency (Fixed to LKR/USD)",
+          "Email, Phone, Mobile",
+          "Tabs: Other Details (Tax Rate), Remarks (TextArea)"
+        ]
+      }
+    },
+    "inventory": {
+      "default_view": "Split Screen (List 100% or List 30% / Details 70%)",
+      "list_features": [
+        "Search Bar",
+        "Category Pills (Filter)",
+        "Action Buttons: New Item, Receive Stock (GRN)"
+      ],
+      "table_columns": [
+        "Image", "Name/SKU", "Category", "Supplier", "Cost", "Price", "Stock", "Action (Edit Button)"
+      ],
+      "grn_view": {
+        "type": "Full Page Split (Form 70% / Supplier List 30%)",
+        "features": [
+          "Date Selector",
+          "Supplier Dropdown",
+          "Line Item Entry (Item, Qty, Cost, Discount) -> Add to Grid",
+          "Grand Total Calculation",
+          "Logic: Updates Item Stock Qty + Updates Item Cost Price on confirm"
+        ],
+        "supplier_sidebar": "Manage (Add/Edit) Suppliers list beside the GRN form"
+      },
+      "create_edit_view": {
+        "type": "Full Page Form",
+        "features": ["Image Upload Placeholder", "Sales Info", "Purchase Info (Cost/Supplier)", "Opening Stock"]
+      }
+    },
+    "invoice_pos": {
+      "default_view": "Split Screen (List 100% or List 30% / Details 70%)",
+      "list_features": ["Search", "Sort by Date/Number", "Status Badges"],
+      "detail_view": "Read-only Invoice Preview with Print/Email actions",
+      "pos_view": {
+        "type": "Full Page Split (Product Grid 55% / Cart 45%)",
+        "left_panel": [
+          "Header: Customer Select, Date, Due Date",
+          "Product Grid: Search, Category Filter, Card UI for items"
+        ],
+        "right_panel": [
+          "Cart Table (Qty Adjust, Remove)",
+          "Financial Footer: Subtotal, Tax (10%), Discount (5%), Grand Total",
+          "Actions: Cancel (Red), Hold (Yellow), Process Payment (Green)"
+        ]
+      },
+      "payment_modal": {
+        "trigger": "Process Payment Button",
+        "modes": ["CASH", "CARD"],
+        "cash_logic": "Input Cash Received -> Auto-calculate Change/Balance",
+        "actions": "Print Bill, Complete Order"
+      }
+    }
+  },
+  "data_models": {
+    "customer": "id, type, name, company, contact info, currency, receivables, payment terms",
+    "item": "id, sku, name, category, stock, cost, price, supplier, image",
+    "invoice": "id, number, customer_id, dates, status, line_items[], totals",
+    "supplier": "id, name, contact person, address, phone, email"
+  }
+}
