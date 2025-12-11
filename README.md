@@ -1,20 +1,11 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+Welcome to Business Management Operating System Powerd by Grobern
+Project info
+A smart and simple POS and billing system designed for small and medium businesses operating online.
 
-# Run and deploy your AI Studio app
+It helps you create professional invoices, manage daily sales, and keep full control of your stock.
 
-This contains everything you need to run your app locally.
+With built-in inventory tracking, GRN management, and easy account handling, this system ensures your business runs smoothly and efficiently.
 
-View your app in AI Studio: https://ai.studio/apps/drive/11o8QGGsMxKwlSg2LLRrYA7oCBnKrHWp6
+Perfect for businesses that want a fast, reliable, and user-friendly solution without unnecessary complexity
 
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+URL: https://main.dhc1cp06zpm3j.amplifyapp.com/
