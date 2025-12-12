@@ -989,7 +989,7 @@ const Inventory: React.FC<InventoryProps> = ({
                                     {selectedItem && (
                                         <>
                                              <button onClick={handleGRNOpen} className="w-full text-left px-4 py-2 hover:bg-gray-50 text-gray-700 flex items-center space-x-2">
-                                                <Truck size={14} /> <span>Receive Stock</span>
+                                                <Truck size={14} /> <span>Receive Stock (GRN)</span>
                                             </button>
                                             <button onClick={handleCreateOpen} className="w-full text-left px-4 py-2 hover:bg-gray-50 text-gray-700 flex items-center space-x-2">
                                                 <Plus size={14} /> <span>New Item</span>
