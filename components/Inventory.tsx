@@ -557,8 +557,8 @@ const Inventory: React.FC<InventoryProps> = ({
                           <ArrowLeft size={24} />
                       </button>
                       <div>
-                          <h2 className="text-2xl font-bold text-gray-800">Receive Stock</h2>
-                          <p className="text-sm text-gray-500">Goods Received Note (GRN)</p>
+                          <h2 className="text-2xl font-bold text-gray-800">Goods Received Note (GRN)</h2>
+                          <p className="text-sm text-gray-500">Receive Stock(GRN)</p>
                       </div>
                   </div>
              </div>
